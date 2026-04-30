@@ -1,0 +1,7 @@
+<step title="Incoming Request" date="2026-02-13T03:54:28.839" instance="5377a1" url="/api/deployments/temp-d8a91b02/log" method="GET" type="request" pid="768,1,17" Host="app-scgjwdvoicebot-webbackend-dev.scm.azurewebsites.net" User-Agent="vscode-azureappservice/0.26.4 core-rest-pipeline/1.20.0 Node/22.20.0 OS/(arm64-Darwin-23.0.0)" Accept-Encoding="gzip,deflate" Accept-Language="en" Authorization="Bea..." x-ms-correlation-request-id="8e12ef32-2961-4b63-a8bb-ed205a528d94" x-ms-client-request-id="e6e2c033-c186-4faf-bb8c-4b28ffebb780" X-ARR-LOG-ID="e6e2c033-c186-4faf-bb8c-4b28ffebb780" CLIENT-IP="49.231.9.211:19555" X-SITE-DEPLOYMENT-ID="app-scgjwdvoicebot-webbackend-dev" WAS-DEFAULT-HOSTNAME="app-scgjwdvoicebot-webbackend-dev.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/deployments/temp-d8a91b02/log" X-Client-IP="49.231.9.211" X-Client-Port="19555" >
+  <step title="Cleanup Xml Logs" date="2026-02-13T03:54:28.852" /><!-- duration: 5ms -->
+  <step title="DeploymentService.GetLogEntry" date="2026-02-13T03:54:28.865" >
+    <step title="DeploymentManager.GetLogEntries(id:temp-d8a91b02)" date="2026-02-13T03:54:28.868" /><!-- duration: 8ms -->
+  </step><!-- duration: 15ms -->
+  <step title="Outgoing response" date="2026-02-13T03:54:28.887" type="response" statusCode="200" statusText="OK" /><!-- duration: 4ms -->
+</step><!-- duration: 72ms -->

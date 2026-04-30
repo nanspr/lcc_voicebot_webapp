@@ -1,0 +1,813 @@
+.voicebot-container {
+  min-height: 100vh;
+  background: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.voicebot-container::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.03) 0%,
+    transparent 70%
+  );
+  animation: pulse 20s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+/* Sidebar Styles */
+.sidebar {
+  width: 280px;
+  min-height: 100vh;
+  background: #ffffff;
+  border-right: 2px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-header {
+  padding: 2rem 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.logo-asset {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.logo-scgjwd {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.platform-text {
+  font-size: 1.08rem; /* เพิ่มขึ้น 20% จาก 0.9rem */
+  color: #6b7280;
+  font-weight: 700; /* ตัวหนา */
+  margin: 0;
+  text-align: left;
+  padding-top: 0.5rem;
+}
+
+.sidebar-tabs {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-tab {
+  padding: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.sidebar-tab:hover {
+  background: #f9fafb;
+}
+
+.sidebar-tab.active {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border-left: 4px solid #667eea;
+}
+
+.tab-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+  display: block;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding-left: 1rem;
+}
+
+.sidebar-tab.active .tab-label {
+  -webkit-text-fill-color: #667eea;
+  background: none;
+  color: #667eea;
+}
+
+.voicebot-content {
+  width: calc(100% - 280px);
+  margin-left: 280px;
+  padding: 2rem;
+  max-width: none;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* จัดกึ่งกลาง */
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+  text-align: center; /* จัดกึ่งกลาง */
+  margin-bottom: 3rem;
+  animation: fadeInDown 0.8s ease-out;
+  width: 100%;
+}
+
+.gradient-title {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+  text-align: center; /* จัดกึ่งกลาง */
+}
+
+.gradient-subtitle {
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* API Key Section */
+.api-key-section {
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.8s ease-out 0.1s both;
+}
+
+.btn-api-key-toggle {
+  background: transparent;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.btn-api-key-toggle:hover {
+  border-color: #667eea;
+  color: #667eea;
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.api-key-input-group {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  border: 2px solid #e5e7eb;
+}
+
+.api-key-input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #ffffff;
+}
+
+.api-key-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.api-key-hint {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+/* Input Section */
+.input-section {
+  margin-bottom: 2rem;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+  width: 100%;
+  max-width: 1200px; /* ลดความกว้างลงครึ่งหนึ่ง (จาก 2400px เป็น 1200px) */
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.gradient-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.message-input {
+  width: 100%;
+  padding: 1.5rem; /* เพิ่ม padding */
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 1.1rem; /* เพิ่ม font size */
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: #ffffff;
+  resize: vertical;
+  min-height: 150px; /* เพิ่มความสูงขั้นต่ำ */
+}
+
+.message-input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+.message-input::placeholder {
+  color: #9ca3af;
+}
+
+/* Buttons */
+.btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.4);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.5);
+}
+
+.loading-spinner {
+  display: inline-block;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Output Section */
+.output-section {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+  margin-bottom: 2rem;
+  width: 100%;
+  max-width: 1200px; /* ให้ความกว้างเท่ากับ input section */
+}
+
+.output-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.output-card:hover {
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.1);
+  border-color: #667eea;
+}
+
+.output-header {
+  margin-bottom: 1rem;
+}
+
+.gradient-text {
+  font-size: 1.3rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.output-message {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #374151;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.output-message p {
+  margin: 0;
+}
+
+/* Action Buttons */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.action-button-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.error-message {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.audio-error-message {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.call-error-message {
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+.btn-tts,
+.btn-call {
+  flex: 1;
+  font-size: 1.1rem;
+  padding: 1.2rem 2rem;
+}
+
+/* Audio Player */
+.audio-player-section {
+  animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+.audio-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.audio-card h4 {
+  margin-bottom: 1rem;
+}
+
+.audio-player {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: 8px;
+}
+
+.audio-player::-webkit-media-controls-panel {
+  background-color: #f9fafb;
+}
+
+/* Status Message */
+.status-message {
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-weight: 500;
+  text-align: center;
+  animation: fadeIn 0.5s ease-out;
+  margin-top: 1rem;
+}
+
+.status-message.success,
+.status-message.audio-success,
+.status-message.call-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.status-message.error,
+.status-message.audio-error,
+.status-message.call-error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Dial Pad Styles */
+.dial-pad-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  padding: 1rem;
+}
+
+.dial-pad-container {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.4s ease-out;
+  position: relative;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.dial-pad-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dial-pad-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.dial-pad-close {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #6b7280;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.dial-pad-close:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.dial-pad-display {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 70px;
+}
+
+.phone-number-display {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: 0.05em;
+  flex: 1;
+  text-align: center;
+  font-family: 'SF Mono', 'Monaco', 'Courier New', monospace;
+}
+
+.phone-number-display .placeholder {
+  color: #9ca3af;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.dial-pad-backspace {
+  background: transparent;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 50px;
+}
+
+.dial-pad-backspace:hover {
+  background: #f3f4f6;
+  border-color: #667eea;
+  color: #667eea;
+}
+
+.dial-pad-backspace:active {
+  transform: scale(0.95);
+}
+
+.dial-pad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.dial-pad-key {
+  aspect-ratio: 1;
+  background: linear-gradient(135deg, #ffffff 0%, #f9fafb 100%);
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.dial-pad-key::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(102, 126, 234, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.3s, height 0.3s;
+}
+
+.dial-pad-key:active::before {
+  width: 200px;
+  height: 200px;
+}
+
+.dial-pad-key:hover {
+  border-color: #667eea;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+}
+
+.dial-pad-key:active {
+  transform: translateY(0) scale(0.95);
+}
+
+.dial-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1;
+}
+
+.dial-letters {
+  font-size: 0.7rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-top: 0.2rem;
+  letter-spacing: 0.05em;
+}
+
+.dial-pad-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.dial-call-btn {
+  width: 100%;
+  padding: 1.2rem 2rem;
+  font-size: 1.2rem;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+}
+
+.dial-call-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.5);
+}
+
+.dial-call-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: relative;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .sidebar-header {
+    padding: 1.5rem;
+  }
+
+  .logo-container {
+    justify-content: center;
+  }
+
+  .sidebar-tab {
+    padding: 1rem;
+  }
+
+  .voicebot-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 1rem;
+  }
+
+  .voicebot-container {
+    flex-direction: column;
+  }
+
+  .gradient-title {
+    font-size: 2rem;
+  }
+
+  .gradient-subtitle {
+    font-size: 1rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .btn-tts,
+  .btn-call {
+    width: 100%;
+  }
+
+  .dial-pad-container {
+    padding: 1.5rem;
+    max-width: 100%;
+  }
+
+  .dial-pad-grid {
+    gap: 0.75rem;
+  }
+
+  .dial-number {
+    font-size: 1.5rem;
+  }
+
+  .dial-letters {
+    font-size: 0.6rem;
+  }
+
+  .phone-number-display {
+    font-size: 1.5rem;
+  }
+}
+

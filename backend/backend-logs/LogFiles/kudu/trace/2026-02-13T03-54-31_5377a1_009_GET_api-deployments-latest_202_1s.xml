@@ -1,0 +1,8 @@
+<step title="Incoming Request" date="2026-02-13T03:54:31.420" instance="5377a1" url="/api/deployments/latest?deployer=ms-azuretools-vscode&amp;time=2026-02-13_03-54-26Z" method="GET" type="request" pid="768,1,17" Host="app-scgjwdvoicebot-webbackend-dev.scm.azurewebsites.net" User-Agent="vscode-azureappservice/0.26.4 core-rest-pipeline/1.20.0 Node/22.20.0 OS/(arm64-Darwin-23.0.0)" Accept-Encoding="gzip,deflate" Accept-Language="en" Authorization="Bea..." x-ms-correlation-request-id="8e12ef32-2961-4b63-a8bb-ed205a528d94" x-ms-client-request-id="e0b7a78c-c442-4d8b-9555-ead9d360338f" X-ARR-LOG-ID="e0b7a78c-c442-4d8b-9555-ead9d360338f" CLIENT-IP="49.231.9.211:30628" X-SITE-DEPLOYMENT-ID="app-scgjwdvoicebot-webbackend-dev" WAS-DEFAULT-HOSTNAME="app-scgjwdvoicebot-webbackend-dev.scm.azurewebsites.net" X-Forwarded-Proto="https" X-AppService-Proto="https" X-Forwarded-TlsVersion="1.3" X-WAWS-Unencoded-URL="/api/deployments/latest?deployer=ms-azuretools-vscode&amp;time=2026-02-13_03-54-26Z" X-Client-IP="49.231.9.211" X-Client-Port="30628" >
+  <step title="DeploymentService.GetResult" date="2026-02-13T03:54:31.427" >
+    <step title="DeploymentService.GetLatestDeployment" date="2026-02-13T03:54:31.430" >
+      <step title="DeploymentManager.GetResults" date="2026-02-13T03:54:31.438" /><!-- duration: 557ms -->
+    </step><!-- duration: 572ms -->
+  </step><!-- duration: 579ms -->
+  <step title="Outgoing response" date="2026-02-13T03:54:32.010" type="response" statusCode="202" statusText="Accepted" /><!-- duration: 3ms -->
+</step><!-- duration: 596ms -->
